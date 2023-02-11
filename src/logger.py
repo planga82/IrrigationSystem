@@ -29,6 +29,3 @@ def write_log_line(line, base_folder = "logs", base_file_name = "out.log", max_b
     file.write(line + "\n")
     file.flush()
     file.close()
-    
-for x in range(210):
-    write_log_line("0123456789")
