@@ -7,7 +7,7 @@ def initialice(base_folder = "logs"):
         os.mkdir(base_folder)
 
 # Files go from out.log1 to out.log5
-def rotate_file(base_folder = "logs", base_file_name = "out.log", num_max_files = 5, max_bytes_file = 1000):
+def rotate_file(base_folder = "logs", base_file_name = "out.log", num_max_files = 5):
     dirs = os.listdir(base_folder)
     file_base = base_folder + "/" + base_file_name
     if len(dirs) >= num_max_files:
@@ -16,4 +16,13 @@ def rotate_file(base_folder = "logs", base_file_name = "out.log", num_max_files 
         os.rename(file_base + str(i-1), file_base + str(i))
     open(file_base + str(1), 'a').close()   
         
+def write_log_line(line, base_folder = "logs", base_file_name = "out.log", max_bytes_file = 1000):
+    file_base = base_folder + "/" + base_file_name
+    byte_size = os.stat(file_base + str(1))[6]
+    if (byte_size > max_bytes_file):
+        rotate_file()
+    file = open(file_base + str(1), 'a')
+    file.write(line + "\n")
+    file.flush()
+    file.close()
     
