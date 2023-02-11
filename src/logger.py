@@ -29,3 +29,9 @@ def write_log_line(line, base_folder = "logs", base_file_name = "out.log", max_b
     file.write(line + "\n")
     file.flush()
     file.close()
+    
+def clear_logs(base_folder = "logs"):
+    dirs = os.listdir(base_folder)
+    for f in dirs:
+        os.remove(base_folder + "/" + f)
+
