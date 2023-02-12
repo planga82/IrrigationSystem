@@ -1,5 +1,4 @@
 import machine
-import utime
    
     
 def capture_temperature():

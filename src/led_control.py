@@ -8,6 +8,9 @@ def turn_on_internal_led(sleep_period = 1):
     utime.sleep(sleep_period)
     onboard_led.value(0)
     
-def start_led_timer(custom_period = 30000):
-    Timer(period=custom_period, mode=Timer.PERIODIC, callback=lambda t:turn_on_internal_led())
+# TODO use asyncio
+def start_led_control(custom_period = 30):
+    while True:
+        turn_on_internal_led()
+        utime.sleep(custom_period)
     
