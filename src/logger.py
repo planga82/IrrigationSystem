@@ -9,7 +9,7 @@ def initialice(base_folder = "logs"):
         
 def current_time():
     now = time.localtime()
-    return "Date: {}/{}/{} {}:{}".format(now[2], now[1], now[0], now[3], now[4])
+    return "{}/{}/{} {}:{}".format(now[2], now[1], now[0], now[3], now[4])
 
 def generate_line(data_list, sep = ";", new_line = "\n"):
     return current_time() + sep + sep.join(data_list) + new_line
@@ -43,3 +43,11 @@ def clear_logs(base_folder = "logs"):
     for f in dirs:
         os.remove(base_folder + "/" + f)
 
+def print_logs(base_folder = "logs"):
+    dirs = os.listdir(base_folder)
+    for f in dirs:
+        file = open(base_folder + "/" + f, 'r')
+        out = file.read()
+        for line in out.split("\n"):
+            print(line)
+        
