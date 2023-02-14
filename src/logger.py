@@ -9,7 +9,7 @@ def initialice(base_folder = "logs"):
         
 def current_time():
     now = time.localtime()
-    return "{}/{}/{} {}:{}".format(now[2], now[1], now[0], now[3], now[4])
+    return "{:02d}/{:02d}/{} {:02d}:{:02d}".format(now[2], now[1], now[0], now[3], now[4])
 
 def generate_line(data_list, sep = ";", new_line = "\n"):
     return current_time() + sep + sep.join(data_list) + new_line
