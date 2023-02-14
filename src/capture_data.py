@@ -6,7 +6,7 @@ def capture_temperature():
     conversion_factor = 3.3 / 65535
     reading = sensor_temp.read_u16() * conversion_factor
     temperature = 27 - (reading - 0.706)/0.001721
-    return str(round(temperature, 2))
+    return str(round(temperature, 1))
 
 def capture_soil_moisture():
     soil = machine.ADC(machine.Pin(26))
