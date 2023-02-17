@@ -5,8 +5,6 @@ execfile("logger.py")
 execfile("led_control.py")
 execfile("capture_data.py")
 
-# TODO use asyncio
-
 _thread.start_new_thread(start_led_control, [])
 
 while True:

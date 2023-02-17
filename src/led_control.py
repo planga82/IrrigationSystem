@@ -9,7 +9,7 @@ def turn_on_internal_led(sleep_period = 1):
     onboard_led.value(0)
     
 # TODO use asyncio
-def start_led_control(custom_period = 30):
+def start_led_control(custom_period = 10):
     while True:
         turn_on_internal_led()
         utime.sleep(custom_period)

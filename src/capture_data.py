@@ -10,8 +10,8 @@ def capture_temperature():
 
 def capture_soil_moisture():
     soil = machine.ADC(machine.Pin(26))
-    min_moisture=0
-    max_moisture=65535
+    min_moisture=26000
+    max_moisture=53000
     moisture = (max_moisture - soil.read_u16()) * 100 / (max_moisture - min_moisture)
     return str(int(moisture))
 

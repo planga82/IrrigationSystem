@@ -26,7 +26,7 @@ def rotate_file(base_folder = "logs", base_file_name = "out.log", num_max_files 
         os.rename(file_base + str(i - 1), file_base + str(i))
     open(file_base + str(1), 'a').close()   
         
-def write_log_line(data_list, base_folder = "logs", base_file_name = "out.log", max_bytes_file = 1000):
+def write_log_line(data_list, base_folder = "logs", base_file_name = "out.log", max_bytes_file = 100000):
     initialice()
     file_base = base_folder + "/" + base_file_name
     open(file_base + str(1), 'a').close()
@@ -46,8 +46,10 @@ def clear_logs(base_folder = "logs"):
 def print_logs(base_folder = "logs"):
     dirs = os.listdir(base_folder)
     for f in dirs:
-        file = open(base_folder + "/" + f, 'r')
+        file_name = base_folder + "/" + f
+        file = open(file_name, 'r')
         out = file.read()
+        print(file_name)
         for line in out.split("\n"):
             print(line)
         
