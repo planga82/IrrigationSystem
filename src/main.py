@@ -28,9 +28,9 @@ def thread2():
     while True:
         counter2 = update_counter(counter2)
         #--------------------------------------
-        execute_every(counter2, 1, secure_pulling_control_button_state)
+        execute_every(counter2, 1, control_button)
         #--------------------------------------
-        utime.sleep(1)
+        utime.sleep(0.2)
     
 _thread.start_new_thread(thread1, [])
 thread2()
