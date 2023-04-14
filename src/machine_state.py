@@ -9,8 +9,8 @@ C_OFF = "CONFIGURATION-ACTIVE-WATER-OFF"
 C_ON = "CONFIGURATION-ACTIVE-WATER-ON"
 
 #Global constants
-total_irrigation_cicles = 5
-total_waiting_cycles = 30
+total_irrigation_cicles = 3
+total_waiting_cycles = 1440 #24h
 
 #Global variables
 current_cycles = 0
