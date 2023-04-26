@@ -1,10 +1,24 @@
 import machine
 import utime
 
+
+engine_switch = 0
     
 def update_engine_state(engine_state):
+    global engine_switch
     engine = machine.Pin(18, machine.Pin.OUT)
-    engine.value(engine_state)
+    if (engine_state == 1):
+        # To reduce pump water power
+        if(engine_switch >= 6):
+            engine_switch = 0
+        else:
+            engine_switch = engine_switch + 1
+        if(engine_switch == 0):   
+            engine.value(0)
+        else:
+            engine.value(1)
+    else:
+        engine.value(0)
     
 def engine_button():
     global button_engine_state
