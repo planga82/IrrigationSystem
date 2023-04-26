@@ -1,9 +1,16 @@
 import machine
 import utime
 
-def turn_on_internal_led(sleep_period = 1):
+internal_led_status = 0
+
+def turn_internal_led():
+    global internal_led_status
     onboard_led = machine.Pin(25, machine.Pin.OUT)
-    onboard_led.value(1)
-    utime.sleep(sleep_period)
-    onboard_led.value(0)
+    if(internal_led_status == 0):
+        onboard_led.value(1)
+        internal_led_status = 1
+    else:
+        onboard_led.value(0)
+        internal_led_status = 0
+
         

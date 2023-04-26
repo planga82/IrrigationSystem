@@ -1,18 +1,32 @@
 import machine
 import utime
 
-def turn_on_water_pump():
-    engine = machine.Pin(18, machine.Pin.OUT)
-    engine.value(1)
+
+engine_switch = 0
     
-def turn_off_water_pump():
+def update_engine_state(engine_state):
+    global engine_switch
     engine = machine.Pin(18, machine.Pin.OUT)
-    engine.value(0)
-    
-def control_button():
-    button_pump_control = machine.Pin(16, machine.Pin.IN, machine.Pin.PULL_DOWN)
-    if (button_pump_control.value() == 1):
-        turn_on_water_pump()
+    if (engine_state == 1):
+        # To reduce pump water power
+        if(engine_switch >= 6):
+            engine_switch = 0
+        else:
+            engine_switch = engine_switch + 1
+        if(engine_switch == 0):   
+            engine.value(0)
+        else:
+            engine.value(1)
     else:
-        turn_off_water_pump()
+        engine.value(0)
+    
+def engine_button():
+    global button_engine_state
+    button_engine_control = machine.Pin(16, machine.Pin.IN, machine.Pin.PULL_DOWN)
+    button_engine_state = button_engine_control.value()
+    
+def mode_button():
+    global button_mode_state
+    button_mode_control = machine.Pin(17, machine.Pin.IN, machine.Pin.PULL_DOWN)
+    button_mode_state = button_mode_control.value()
         
